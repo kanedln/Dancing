@@ -46,8 +46,9 @@ Everything below is a placeholder. Search `index.html` for each string and repla
 
 | Placeholder | Where | Replace with |
 | --- | --- | --- |
-| `(555) 214-8899` / `+15552148899` | header, hero, footer, form fallback, JSON-LD | Real phone (keep the `tel:` version digits-only) |
-| `hello@hotmaidcleaning.com` | footer, form, `main.js` → `FALLBACK_EMAIL` | Real inbox |
+| ~~`(555) 214-8899`~~ | header, hero, footer, form fallback, JSON-LD | Done — set to `(920) 377-9509` |
+| ~~`hello@hotmaidcleaning.com`~~ | footer, form, `main.js` → `FALLBACK_EMAIL` | Done — set to `myhotcleaning@gmail.com` |
+| ~~Contact name~~ | quote section, footer | Done — set to "Ask for Laurie" |
 | `[Your City]`, `[ST]` | footer, contact list, JSON-LD | Real service area |
 | `https://www.hotmaidcleaning.com/` | `<link rel="canonical">`, `og:url` | Real domain |
 | `og:image` path | `<head>` | Change to the **absolute** URL (`https://yourdomain.com/assets/img/og-cover.jpg`) — some platforms won't resolve a relative one |

@@ -11,7 +11,7 @@
      the form falls back to opening a pre-filled email.
      --------------------------------------------------------- */
   const FORM_ENDPOINT = '';                       // e.g. 'https://formspree.io/f/abcdwxyz'
-  const FALLBACK_EMAIL = 'hello@hotmaidcleaning.com';
+  const FALLBACK_EMAIL = 'myhotcleaning@gmail.com';
 
   const $  = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
@@ -235,7 +235,7 @@
         btn.textContent = 'Request Sent ✓';
       } catch (err) {
         status.innerHTML =
-          `Something went wrong. Call <a href="tel:+15552148899">(555) 214-8899</a> or email ` +
+          `Something went wrong. Call <a href="tel:+19203779509">(920) 377-9509</a> or email ` +
           `<a href="mailto:${FALLBACK_EMAIL}">${FALLBACK_EMAIL}</a>.`;
         status.classList.add('is-err');
         btn.disabled = false;
