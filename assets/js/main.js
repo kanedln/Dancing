@@ -11,7 +11,7 @@
      the form falls back to opening a pre-filled email.
      --------------------------------------------------------- */
   const FORM_ENDPOINT = '';                       // e.g. 'https://formspree.io/f/abcdwxyz'
-  const FALLBACK_EMAIL = 'myhotcleaning@gmail.com';
+  const FALLBACK_EMAIL = 'myhotmaidcleaning@gmail.com';
 
   const $  = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
@@ -131,15 +131,48 @@
     range.addEventListener('input', paint);
     paint();
 
-    // Drop real photos in without touching the CSS:
-    // set data-replace on the .ba__img elements and they load here.
-    $$('.ba__img[data-replace]', ba).forEach(el => {
-      const src = el.dataset.replace.trim();
-      if (!src) return;                       // keep the branded placeholder
-      const probe = new Image();
-      probe.onload = () => { el.style.backgroundImage = `url("${src}")`; };
-      probe.src = src;
-    });
+    // Swap these paths for photos from your own jobs — the pairs must be shot
+    // from the same spot or the wipe won't line up.
+    const ROOMS = {
+      kitchen: ['assets/img/ba-kitchen-before.svg', 'assets/img/ba-kitchen-after.svg'],
+      living:  ['assets/img/ba-living-before.svg',  'assets/img/ba-living-after.svg'],
+      bath:    ['assets/img/ba-bath-before.svg',    'assets/img/ba-bath-after.svg']
+    };
+
+    const beforeEl = $('#baBefore');
+    const afterEl  = $('#baAfter');
+    const tabs     = $$('.ba-tab');
+
+    const showRoom = (room) => {
+      const pair = ROOMS[room];
+      if (!pair) return;
+      beforeEl.style.backgroundImage = `url("${pair[0]}")`;
+      afterEl.style.backgroundImage  = `url("${pair[1]}")`;
+      tabs.forEach(t => {
+        const on = t.dataset.room === room;
+        t.classList.toggle('is-on', on);
+        t.setAttribute('aria-selected', String(on));
+      });
+      range.value = 50;
+      paint();
+    };
+
+    tabs.forEach(tab => tab.addEventListener('click', () => showRoom(tab.dataset.room)));
+
+    // Left/right arrows move between rooms, matching normal tablist behaviour.
+    tabs.forEach((tab, i) => tab.addEventListener('keydown', e => {
+      const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!step) return;
+      e.preventDefault();
+      const next = tabs[(i + step + tabs.length) % tabs.length];
+      next.focus();
+      showRoom(next.dataset.room);
+    }));
+
+    // Preload the other rooms so switching tabs doesn't flash an empty panel.
+    Object.values(ROOMS).flat().forEach(src => { new Image().src = src; });
+
+    showRoom('kitchen');
   }
 
   /* ---------------- quote form ---------------- */

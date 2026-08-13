@@ -10,11 +10,14 @@ Drop the folder on any host (Netlify, Vercel, Cloudflare Pages, GitHub Pages, cP
 
 ```
 index.html
+robots.txt / sitemap.xml
 assets/
   css/styles.css      all styling + self-hosted @font-face rules
-  js/main.js          nav, reveals, counters, before/after slider, form
-  img/                banner in webp (4 widths) + jpg fallback, social card, favicon
+  js/main.js          nav, reveals, counters, before/after gallery, form
+  img/                banner (webp ×4 + jpg), room artwork (svg ×6), social card, favicon
   fonts/              Inter + Playfair Display (woff2, latin & latin-ext)
+tools/
+  generate-room-art.py   regenerates the before/after room artwork
 ```
 
 ---
@@ -31,7 +34,8 @@ assets/
 | Why us | Differentiators + 24-hour guarantee stamp |
 | How it works | Three steps |
 | Pricing | Three tiers, middle one featured |
-| Results | Draggable before/after comparison slider |
+| Results | Before/after comparison slider with a kitchen / living room / bathroom switcher |
+| Service area | Sheboygan &amp; Manitowoc county town lists |
 | Reviews | Three testimonial slots |
 | Quote form | Validated, with honeypot spam trap |
 | FAQ | Native `<details>` accordion |
@@ -47,9 +51,9 @@ Everything below is a placeholder. Search `index.html` for each string and repla
 | Placeholder | Where | Replace with |
 | --- | --- | --- |
 | ~~`(555) 214-8899`~~ | header, hero, footer, form fallback, JSON-LD | Done — set to `(920) 377-9509` |
-| ~~`hello@hotmaidcleaning.com`~~ | footer, form, `main.js` → `FALLBACK_EMAIL` | Done — set to `myhotcleaning@gmail.com` |
+| ~~`hello@hotmaidcleaning.com`~~ | footer, form, `main.js` → `FALLBACK_EMAIL` | Done — set to `myhotmaidcleaning@gmail.com` |
 | ~~Contact name~~ | quote section, footer | Done — set to "Ask for Laurie" |
-| `[Your City]`, `[ST]` | footer, contact list, JSON-LD | Real service area |
+| ~~`[Your City]`, `[ST]`~~ | footer, contact list, JSON-LD | Done — Sheboygan &amp; Manitowoc, WI |
 | `https://www.hotmaidcleaning.com/` | `<link rel="canonical">`, `og:url` | Real domain |
 | `og:image` path | `<head>` | Change to the **absolute** URL (`https://yourdomain.com/assets/img/og-cover.jpg`) — some platforms won't resolve a relative one |
 | `[Client name]` quotes | Reviews section | **Real reviews only.** Pull them from Google/Airbnb — don't invent testimonials |
@@ -71,17 +75,36 @@ submissions from people without a mail client configured, so set a real endpoint
 
 On Netlify you can skip the JS entirely: add `netlify` and `name="quote"` to the `<form>` tag.
 
-### Add before/after photos
+### Swap in photos from real jobs
 
-The slider ships with a branded placeholder pattern. To use real photos, drop them in
-`assets/img/` and fill in the two attributes in the Results section:
+The Results slider ships with **illustrated** room scenes, not photographs — they show the finish
+standard without claiming to be any particular customer's home, and the section says so on the
+page. Replace them with photos from your own jobs as soon as you have a good pair.
 
-```html
-<div class="ba__img ba__img--before" data-replace="assets/img/before-1.jpg">
-<div class="ba__img ba__img--after"  data-replace="assets/img/after-1.jpg">
+Drop the files in `assets/img/` and edit the `ROOMS` map near the top of the slider block in
+`assets/js/main.js`:
+
+```js
+const ROOMS = {
+  kitchen: ['assets/img/kitchen-before.jpg', 'assets/img/kitchen-after.jpg'],
+  living:  ['assets/img/living-before.jpg',  'assets/img/living-after.jpg'],
+  bath:    ['assets/img/bath-before.jpg',    'assets/img/bath-after.jpg']
+};
 ```
 
-They load automatically — no CSS changes needed. Shoot both from the same spot; 16:9 works best.
+The keys must match the `data-room` attributes on the `.ba-tab` buttons. Two rules for the photos:
+shoot **before and after from the exact same spot** (tripod or a taped floor mark) or the wipe
+won't line up, and use 16:9 — anything else gets cropped by `background-size: cover`. Once you use
+real photos, delete the "Illustrated examples…" line under the slider.
+
+### Regenerating the illustrated artwork
+
+```bash
+python3 tools/generate-room-art.py
+```
+
+Each room is drawn once and rendered twice (before/after) from the same geometry, which is what
+keeps the two frames aligned. Edit the palettes or clutter in that script and re-run.
 
 ---
 
@@ -94,7 +117,9 @@ They load automatically — no CSS changes needed. Shoot both from the same spot
 - **Accessibility.** Skip link, visible focus rings, labelled form fields with `aria-invalid` and
   live error messages, `aria-expanded` on the menu button, Escape closes the drawer, and
   `prefers-reduced-motion` disables all animation.
-- **SEO.** `HouseCleaningService` JSON-LD, Open Graph and Twitter card tags, semantic headings.
+- **SEO.** `HouseCleaningService` JSON-LD with an `areaServed` list of every town covered, plus
+  Open Graph and Twitter card tags, semantic headings, `robots.txt` and `sitemap.xml`. The title
+  and meta description lead with Sheboygan and Manitowoc, which is what local searches key on.
   Update the JSON-LD block whenever you change the phone, address or service list.
 - **Brand colours** were sampled directly from the artwork and live as CSS custom properties at
   the top of `styles.css` — `--pink: #DB044C`, `--gold: #C89439`, `--ink: #050505`.

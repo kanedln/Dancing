@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hot Maid Cleaning | Airbnb, Home &amp; Rental Cleaning — We Make Dirty Places Look Damn Good</title>
-<meta name="description" content="Hot Maid Cleaning delivers turnover-ready Airbnb cleans, deep house cleaning, rental make-readies and listing prep. Insured, background-checked, satisfaction guaranteed. Get a free quote in 60 seconds.">
+<title>Hot Maid Cleaning | Sheboygan &amp; Manitowoc WI House, Airbnb &amp; Rental Cleaning</title>
+<meta name="description" content="Cleaning service for Sheboygan and Manitowoc, Wisconsin. Airbnb turnovers, deep house cleaning, rental make-readies and listing prep. Insured, background-checked, 24-hour re-clean guarantee. Free quote in 60 seconds.">
 <meta name="theme-color" content="#050505">
 <link rel="canonical" href="https://www.hotmaidcleaning.com/">
 
 <!-- Social sharing -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hot Maid Cleaning — We Make Dirty Places Look Damn Good.">
-<meta property="og:description" content="Airbnb turnovers, homes, rentals and home-sale prep. Insured, background-checked, guaranteed.">
+<meta property="og:description" content="Serving Sheboygan &amp; Manitowoc, WI — Airbnb turnovers, homes, rentals and home-sale prep. Insured, background-checked, guaranteed.">
 <meta property="og:image" content="assets/img/og-cover.jpg">
 <meta property="og:url" content="https://www.hotmaidcleaning.com/">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,10 +33,21 @@
   "slogan": "We Make Dirty Places Look Damn Good.",
   "image": "assets/img/og-cover.jpg",
   "telephone": "+1-920-377-9509",
-  "email": "myhotcleaning@gmail.com",
+  "email": "myhotmaidcleaning@gmail.com",
   "priceRange": "$$",
-  "address": { "@type": "PostalAddress", "addressLocality": "Your City", "addressRegion": "ST", "addressCountry": "US" },
-  "areaServed": "Your City and surrounding metro",
+  "address": { "@type": "PostalAddress", "addressLocality": "Sheboygan", "addressRegion": "WI", "addressCountry": "US" },
+  "areaServed": [
+    { "@type": "City", "name": "Sheboygan", "addressRegion": "WI" },
+    { "@type": "City", "name": "Manitowoc", "addressRegion": "WI" },
+    { "@type": "City", "name": "Sheboygan Falls", "addressRegion": "WI" },
+    { "@type": "City", "name": "Kohler", "addressRegion": "WI" },
+    { "@type": "City", "name": "Plymouth", "addressRegion": "WI" },
+    { "@type": "City", "name": "Two Rivers", "addressRegion": "WI" },
+    { "@type": "City", "name": "Kiel", "addressRegion": "WI" },
+    { "@type": "City", "name": "Elkhart Lake", "addressRegion": "WI" },
+    { "@type": "AdministrativeArea", "name": "Sheboygan County, WI" },
+    { "@type": "AdministrativeArea", "name": "Manitowoc County, WI" }
+  ],
   "openingHoursSpecification": [{
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
@@ -57,7 +68,7 @@
 <!-- ============ ANNOUNCEMENT BAR ============ -->
 <div class="topbar">
   <div class="wrap topbar__inner">
-    <p class="topbar__msg"><span class="spark">✦</span> Now booking same-week turnovers — <strong>10% off your first clean</strong></p>
+    <p class="topbar__msg"><span class="spark">✦</span> Sheboygan &amp; Manitowoc, WI — <strong>10% off your first clean</strong></p>
     <div class="topbar__links">
       <a href="tel:+19203779509" class="topbar__link">(920) 377-9509</a>
       <span class="topbar__sep" aria-hidden="true">/</span>
@@ -89,6 +100,7 @@
         <li><a href="#process">How It Works</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#results">Results</a></li>
+        <li><a href="#areas">Areas</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
       <a class="btn btn--gold nav__cta" href="#quote">Get a Free Quote</a>
@@ -353,25 +365,67 @@
 <section class="section" id="results">
   <div class="wrap">
     <header class="sechead reveal">
-      <p class="kicker">Receipts</p>
+      <p class="kicker">The standard</p>
       <h2 class="h2">Drag the handle. <span class="grad">See the difference.</span></h2>
-      <p class="sechead__sub">Drop your own before/after photos in — the slider is ready for them.</p>
+      <p class="sechead__sub">Kitchen, living room, bathroom — this is the finish every job is held to.</p>
     </header>
 
-    <!-- To use real photos: put the file paths in the data-replace attributes below.
-         Leave them empty and the branded placeholder pattern shows instead. -->
-    <div class="ba reveal" id="ba">
-      <div class="ba__img ba__img--before" data-replace=""><span class="ba__tag">Before</span></div>
-      <div class="ba__img ba__img--after" id="baAfter" data-replace=""><span class="ba__tag ba__tag--r">After</span></div>
+    <div class="ba-tabs reveal" role="tablist" aria-label="Choose a room">
+      <button class="ba-tab is-on" type="button" role="tab" aria-selected="true"  data-room="kitchen">Kitchen</button>
+      <button class="ba-tab"       type="button" role="tab" aria-selected="false" data-room="living">Living room</button>
+      <button class="ba-tab"       type="button" role="tab" aria-selected="false" data-room="bath">Bathroom</button>
+    </div>
+
+    <!-- Swap in photos from your own jobs by changing the paths in ROOMS (assets/js/main.js). -->
+    <div class="ba reveal" id="ba" role="tabpanel">
+      <div class="ba__img ba__img--before" id="baBefore"><span class="ba__tag">Before</span></div>
+      <div class="ba__img ba__img--after"  id="baAfter"><span class="ba__tag ba__tag--r">After</span></div>
       <div class="ba__handle" id="baHandle" aria-hidden="true"><span>⇔</span></div>
-      <label class="sr-only" for="baRange">Reveal the after photo</label>
+      <label class="sr-only" for="baRange">Reveal the after image</label>
       <input class="ba__range" type="range" id="baRange" min="0" max="100" value="50" aria-label="Before and after comparison slider">
     </div>
+    <p class="ba__note reveal">Illustrated examples of our finish standard — not photographs of any particular customer’s home.</p>
+  </div>
+</section>
+
+<!-- ============ SERVICE AREA ============ -->
+<section class="section section--alt" id="areas">
+  <div class="wrap">
+    <header class="sechead reveal">
+      <p class="kicker">Where we clean</p>
+      <h2 class="h2">Sheboygan &amp; Manitowoc, <span class="grad">Wisconsin.</span></h2>
+      <p class="sechead__sub">Both counties and the towns between them. Not sure if you're in range? Call and ask — we usually are.</p>
+    </header>
+
+    <div class="areas">
+      <article class="areacard reveal">
+        <h3 class="areacard__h"><span aria-hidden="true">📍</span> Sheboygan County</h3>
+        <ul class="chips">
+          <li>Sheboygan</li><li>Sheboygan Falls</li><li>Kohler</li><li>Plymouth</li>
+          <li>Howards Grove</li><li>Oostburg</li><li>Cedar Grove</li><li>Random Lake</li>
+          <li>Elkhart Lake</li><li>Adell</li><li>Waldo</li><li>Glenbeulah</li>
+        </ul>
+      </article>
+
+      <article class="areacard reveal">
+        <h3 class="areacard__h"><span aria-hidden="true">📍</span> Manitowoc County</h3>
+        <ul class="chips">
+          <li>Manitowoc</li><li>Two Rivers</li><li>Kiel</li><li>Mishicot</li>
+          <li>Valders</li><li>Whitelaw</li><li>Cleveland</li><li>Reedsville</li>
+          <li>St. Nazianz</li><li>Francis Creek</li><li>Maribel</li><li>Newton</li>
+        </ul>
+      </article>
+    </div>
+
+    <p class="areas__note reveal">
+      Lakeshore Airbnb hosts, landlords and realtors from Cedar Grove up to Two Rivers — we run this
+      corridor every week, so same-week openings are realistic even in summer.
+    </p>
   </div>
 </section>
 
 <!-- ============ REVIEWS ============ -->
-<section class="section section--alt" id="reviews">
+<section class="section" id="reviews">
   <div class="wrap">
     <header class="sechead reveal">
       <p class="kicker">Word of mouth</p>
@@ -410,8 +464,9 @@
       <ul class="contactlist">
         <li class="reveal"><span aria-hidden="true">👤</span> Ask for Laurie</li>
         <li class="reveal"><span aria-hidden="true">📞</span> <a href="tel:+19203779509">(920) 377-9509</a></li>
-        <li class="reveal"><span aria-hidden="true">✉️</span> <a href="mailto:myhotcleaning@gmail.com">myhotcleaning@gmail.com</a></li>
-        <li class="reveal"><span aria-hidden="true">📍</span> Serving [Your City] &amp; the surrounding metro</li>
+        <li class="reveal"><span aria-hidden="true">💬</span> <a href="sms:+19203779509">Text us — often the fastest reply</a></li>
+        <li class="reveal"><span aria-hidden="true">✉️</span> <a href="mailto:myhotmaidcleaning@gmail.com">myhotmaidcleaning@gmail.com</a></li>
+        <li class="reveal"><span aria-hidden="true">📍</span> Serving Sheboygan &amp; Manitowoc, WI</li>
         <li class="reveal"><span aria-hidden="true">🕗</span> Mon–Sat, 7am–7pm</li>
       </ul>
     </div>
@@ -484,6 +539,10 @@
         <div class="faq__body"><p>No. Most clients leave a lockbox code, smart-lock PIN or key with the office. We confirm arrival and send finish photos when we’re done.</p></div>
       </details>
       <details class="faq__item reveal">
+        <summary>Do you cover my town?</summary>
+        <div class="faq__body"><p>We cover Sheboygan and Manitowoc counties — Sheboygan, Sheboygan Falls, Kohler, Plymouth, Oostburg, Cedar Grove, Elkhart Lake, Manitowoc, Two Rivers, Kiel, Mishicot, Valders and the towns between. Just outside that? Call anyway; we'll tell you straight whether we can get there.</p></div>
+      </details>
+      <details class="faq__item reveal">
         <summary>Do you bring your own supplies?</summary>
         <div class="faq__body"><p>Everything — equipment, cloths and products. We carry eco and fragrance-free lines too; just flag it on the quote form.</p></div>
       </details>
@@ -548,6 +607,7 @@
       <ul class="footer__list">
         <li><a href="#why">Why us</a></li>
         <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#areas">Service area</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#quote">Get a quote</a></li>
       </ul>
@@ -558,8 +618,8 @@
       <ul class="footer__list">
         <li>Ask for Laurie</li>
         <li><a href="tel:+19203779509">(920) 377-9509</a></li>
-        <li><a href="mailto:myhotcleaning@gmail.com">myhotcleaning@gmail.com</a></li>
-        <li>[Your City], [ST]</li>
+        <li><a href="mailto:myhotmaidcleaning@gmail.com">myhotmaidcleaning@gmail.com</a></li>
+        <li>Sheboygan &amp; Manitowoc, WI</li>
         <li>Mon–Sat · 7am–7pm</li>
       </ul>
     </div>

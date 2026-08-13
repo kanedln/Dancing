@@ -417,25 +417,23 @@ button,input,select,textarea{font:inherit;color:inherit}
   --pos:50%;
   user-select:none;
 }
-.ba__img{position:absolute;inset:0;background-size:cover;background-position:center}
-.ba__img--before{
-  background-image:
-    linear-gradient(135deg,rgba(0,0,0,.55),rgba(0,0,0,.2)),
-    repeating-linear-gradient(45deg,#2A2226 0 22px,#211A1E 22px 44px);
+.ba__img{position:absolute;inset:0;background-size:cover;background-position:center;background-color:#1A1418}
+.ba__img--after{clip-path:inset(0 0 0 var(--pos))}
+
+/* room switcher */
+.ba-tabs{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin:0 0 1.6rem}
+.ba-tab{
+  border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);
+  border-radius:999px;padding:.6rem 1.35rem;font-size:.9rem;font-weight:700;cursor:pointer;
+  transition:background .22s ease,border-color .22s ease,color .22s ease,transform .18s ease;
 }
-.ba__img--after{
-  background-image:
-    linear-gradient(135deg,rgba(219,4,76,.25),rgba(200,148,57,.2)),
-    repeating-linear-gradient(45deg,#3A2F35 0 22px,#332930 22px 44px);
-  clip-path:inset(0 0 0 var(--pos));
+.ba-tab:hover{border-color:var(--gold);color:var(--gold-lt);transform:translateY(-2px)}
+.ba-tab.is-on{
+  background:linear-gradient(135deg,var(--pink-hot),var(--pink) 60%,var(--pink-deep));
+  border-color:transparent;color:#fff;box-shadow:var(--glow-pink);
 }
-/* Hint shown only while a panel has no real photo assigned. */
-.ba__img[data-replace=""]::after{
-  content:"Add your photo";
-  position:absolute;inset:0;display:grid;place-items:center;
-  color:rgba(255,255,255,.26);font-size:.8rem;font-weight:700;
-  letter-spacing:.26em;text-transform:uppercase;
-}
+.ba__note{text-align:center;color:var(--muted);font-size:.84rem;margin:1.1rem 0 0}
+
 .ba__tag{
   position:absolute;top:1rem;left:1rem;
   background:rgba(5,5,5,.75);border:1px solid var(--line);
@@ -460,6 +458,29 @@ button,input,select,textarea{font:inherit;color:inherit}
 }
 .ba__range::-webkit-slider-thumb{-webkit-appearance:none;width:60px;height:100%;cursor:ew-resize}
 .ba__range::-moz-range-thumb{width:60px;height:100%;border:0;background:transparent;cursor:ew-resize}
+
+/* ---------- service area ---------- */
+.areas{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.areacard{
+  border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--ink-3);
+  padding:2rem 1.8rem;transition:border-color .3s ease,transform .3s ease;
+}
+.areacard:hover{border-color:var(--line-gold);transform:translateY(-4px)}
+.areacard__h{
+  font-family:var(--serif);font-size:1.4rem;font-weight:800;color:var(--white);
+  margin:0 0 1.2rem;display:flex;align-items:center;gap:.6rem;
+}
+.chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+.chips li{
+  background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:999px;
+  padding:.4rem .95rem;font-size:.86rem;font-weight:600;color:var(--text);
+  transition:border-color .22s ease,color .22s ease,background .22s ease;
+}
+.chips li:hover{border-color:var(--line-gold);color:var(--gold-lt);background:rgba(200,148,57,.10)}
+.areas__note{
+  max-width:64ch;margin:2.2rem auto 0;text-align:center;
+  color:var(--muted);font-size:.98rem;
+}
 
 /* ---------- reviews ---------- */
 .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:1.4rem}
